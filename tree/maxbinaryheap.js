@@ -1,4 +1,4 @@
-class BinaryHeap {
+class MaximumBinaryHeap {
     constructor() {
         this.values = [56, 7, 8, 70, 12, 23];
     }
@@ -56,12 +56,8 @@ class BinaryHeap {
             this.values[swap] = element;
             idx = swap;
         }
-        return this;
+        return element;
     }
 }
 
-let binaryHeap = new BinaryHeap();
-// binaryHeap.add(5)
-// binaryHeap.add(15)
-// binaryHeap.add(25);
-console.log(binaryHeap.remove());
+let binaryHeap = new MaximumBinaryHeap();

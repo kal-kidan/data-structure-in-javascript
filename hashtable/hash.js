@@ -39,7 +39,8 @@ class HashTable {
             if (items) {
                 for (let j = 0; j < items.length; j++) {
                     const element = items[j];
-                    keys.push(element[0])
+                    if (!keys.includes(element[0]))
+                        keys.push(element[0])
                 }
             }
 
@@ -53,7 +54,8 @@ class HashTable {
             if (items) {
                 for (let j = 0; j < items.length; j++) {
                     const element = items[j];
-                    values.push(element[1])
+                    if (!values.includes(element[1]))
+                        values.push(element[1])
                 }
             }
 
@@ -61,9 +63,3 @@ class HashTable {
         return values;
     }
 }
-
-const ht = new HashTable(17);
-ht.set("yellow", "yellow color code");
-ht.set("maroon", "maroon color code");
-ht.set("red", "red color code");
-console.log(ht.values())

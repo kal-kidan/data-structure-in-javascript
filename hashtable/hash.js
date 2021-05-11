@@ -31,10 +31,39 @@ class HashTable {
         }
         return undefined;
     }
+
+    keys() {
+        const keys = [];
+        for (let i = 0; i < this.keyMap.length; i++) {
+            const items = this.keyMap[i];
+            if (items) {
+                for (let j = 0; j < items.length; j++) {
+                    const element = items[j];
+                    keys.push(element[0])
+                }
+            }
+
+        }
+        return keys;
+    }
+    values() {
+        const values = [];
+        for (let i = 0; i < this.keyMap.length; i++) {
+            const items = this.keyMap[i];
+            if (items) {
+                for (let j = 0; j < items.length; j++) {
+                    const element = items[j];
+                    values.push(element[1])
+                }
+            }
+
+        }
+        return values;
+    }
 }
 
 const ht = new HashTable(17);
 ht.set("yellow", "yellow color code");
 ht.set("maroon", "maroon color code");
 ht.set("red", "red color code");
-console.log(ht.get("red"))
+console.log(ht.values())

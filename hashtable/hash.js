@@ -1,6 +1,6 @@
 class HashTable {
     constructor(size = 53) {
-        this.keyMap = new Array(53);
+        this.keyMap = new Array(size);
     }
     _hash(key) {
         const PRIME_NUMBER = 31;
@@ -19,8 +19,22 @@ class HashTable {
         this.keyMap[index].push([key, value])
         return this.keyMap;
     }
+    get(key) {
+        let index = this._hash(key);
+        let values = this.keyMap[index];
+        if (values) {
+            for (let i = 0; i < values.length; i++) {
+                if (values[i][0] === key) {
+                    return values[i][1];
+                }
+            }
+        }
+        return undefined;
+    }
 }
 
-const ht = new HashTable();
-ht.set("age", "22");
-console.log(ht.set("name", "kalkidan"))
+const ht = new HashTable(17);
+ht.set("yellow", "yellow color code");
+ht.set("maroon", "maroon color code");
+ht.set("red", "red color code");
+console.log(ht.get("red"))

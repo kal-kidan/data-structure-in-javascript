@@ -62,7 +62,24 @@ class Graph {
         traverse(v);
         return vertixs;
     }
+    dfsRecursive(start) {
+        let stack = [start];
+        let visited = {};
+        let result = [];
+        let currentVertix;
+        while (stack.length) {
+            currentVertix = stack.pop();
+            if (!visited[currentVertix]) {
+                result.push(currentVertix);
+                visited[currentVertix] = true;
+            }
+            this.adjacencyList[currentVertix].forEach(item => {
+                if (!visited[item]) stack.push(item)
+            });
+        }
+        return result;
 
+    }
 
 }
 
@@ -70,6 +87,10 @@ let g = new Graph();
 g.addVertix("tokiyo");
 g.addVertix("london");
 g.addVertix("addis");
+g.addVertix("San Fransisco");
+g.addVertix("california");
 g.addEdge("tokiyo", "london");
 g.addEdge("tokiyo", "addis");
+g.addEdge("San Fransisco", "addis");
+g.addEdge("california", "london");
 console.log(g.dfs("tokiyo"));
